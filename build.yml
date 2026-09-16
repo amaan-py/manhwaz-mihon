@@ -33,9 +33,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Build ManhwaZ
-        working-directory: keiyoushi
-        run: ./gradlew :src:en:manhwaz:assembleRelease --stacktrace
+      - name: Format source
+  working-directory: keiyoushi
+  run: ./gradlew spotlessApply
+
+- name: Build ManhwaZ
+  working-directory: keiyoushi
+  run: ./gradlew :src:en:manhwaz:assembleRelease --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
